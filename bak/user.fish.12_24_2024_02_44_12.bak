@@ -1,0 +1,64 @@
+# my alias preferences
+alias yay paru
+alias cat bat
+alias grep rg
+alias vim nvim
+alias lg lazygit
+alias wget aria2c
+alias fzf 'fzf --preview="bat --color=always --style=header,grid --line-range=:500 {}"'
+
+# my abbreviations
+abbr c 'clear'
+abbr q 'exit'
+abbr s 'source ~/.config/fish/user.fish'
+abbr f 'fuck -y'
+
+# hastebin
+function hb 
+    if test (count $argv) = 0
+        echo "No file path specified."
+        return
+    else if  ! test -f $argv
+        echo "File path does not exist."
+        return
+    end
+
+    set uri "http://bin.christitus.com/documents"
+    set response $(curl -s -X POST -d "$(cat $argv)" "$uri")
+    if test $status = 0
+        set hasteKey $(echo $response | jq -r '.key')
+        echo "http://bin.christitus.com/$hasteKey"
+    else
+        echo "Failed to upload the document."
+    end
+end
+
+
+# zoxide
+zoxide init fish | source
+thefuck --alias | source
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
+
+
+function humm
+    echo -e "\033[1;34m==================================================================\033[0m"
+    echo -e "\033[1;34m\t\t\tRarely Used Commands\033[0m"
+    echo -e "\033[1;34m==================================================================\033[0m"
+    echo -e "\033[1;34m Command\tDescription\033[0m"
+    echo -e "\033[1;34m------------------------------------------------------------------\033[0m"
+    
+    echo -e "\033[1;34m scc\t\t\033[1;32mEstimate your code coverage.\033[0m"
+    echo -e "\033[1;34m duf\t\t\033[1;32mGet a quick look at disk usage.\033[0m"
+    echo -e "\033[1;34m dua\t\t\033[1;32mInspect disk usage in the current dir.\033[0m"
+    echo -e "\033[1;34m bandwhich\t\033[1;32mFind out who’s eating up your bandwidth.\033[0m"
+    echo -e "\033[1;34m just\t\t\033[1;32mSpeed up your builds.\033[0m"
+    echo -e "\033[1;34m cmus\t\t\033[1;32mPlay music right from the terminal.\033[0m"
+    echo -e "\033[1;34m mutt\t\t\033[1;32mSend emails from your terminal.\033[0m"
+    echo -e "\033[1;34m tmate\t\t\033[1;32mShare your terminal with others.\033[0m"
+    
+    echo -e "\033[1;34m------------------------------------------------------------------\033[0m"
+    echo -e "\033[1;34m==================================================================\033[0m"
+end
