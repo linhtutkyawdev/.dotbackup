@@ -41,9 +41,10 @@ function dotbackup
             git init
             git remote add origin https://github.com/linhtutkyawdev/.dotbackup.git
         end
+        git checkout -b bak
         git add .
         git commit -m "Backup update"$(date +'%m_%d_%Y_%H_%M_%S')
-        git push origin master
+        git push origin bak
         cd $og_path
         return
         
@@ -56,7 +57,8 @@ function dotbackup
             git init
             git remote add origin https://github.com/linhtutkyawdev/.dotbackup.git
         end
-        git pull origin master
+        git checkout -b bak
+        git pull origin bak
         cd $og_path
         return
 
