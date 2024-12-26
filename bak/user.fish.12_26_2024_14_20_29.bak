@@ -1,10 +1,7 @@
 # my alias preferences
 alias yay paru
-alias cat bat
-alias grep rg
 alias vim nvim
 alias lg lazygit
-alias wget aria2c
 alias fzf 'fzf --preview="bat --color=always --style=header,grid --line-range=:500 {}"'
 
 # my abbreviations
@@ -41,6 +38,22 @@ thefuck --alias | source
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+# rust
+set --export PATH $HOME/.cargo/bin $PATH
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /home/lhk/miniconda3/bin/conda
+    eval /home/lhk/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+else
+    if test -f "/home/lhk/miniconda3/etc/fish/conf.d/conda.fish"
+        . "/home/lhk/miniconda3/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "/home/lhk/miniconda3/bin" $PATH
+    end
+end
+# <<< conda initialize <<<
 
 
 function humm
