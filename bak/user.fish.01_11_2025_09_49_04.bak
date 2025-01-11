@@ -4,10 +4,12 @@ alias vim nvim
 alias lg lazygit
 alias fzf 'fzf --preview="bat --color=always --style=header,grid --line-range=:500 {}"'
 
+# cursor in background
+function c
+    cursor $argv > /dev/null 2>&1 & && disown
+end
+
 # my abbreviations
-abbr c 'clear'
-abbr q 'exit'
-abbr s 'source ~/.config/fish/user.fish'
 abbr f 'fuck -y'
 
 # hastebin
@@ -41,16 +43,23 @@ set --export PATH $BUN_INSTALL/bin $PATH
 
 # rust
 set --export PATH $HOME/.cargo/bin $PATH
+# go
+set --export PATH $HOME/go/bin $PATH
+
+# jira token
+set --export JIRA_API_TOKEN 'ATATT3xFfGF043kWF7bBBv3zzxNavo8euKOOyTiUemR891F0n0rx0F4Q1ks20iUi4AxXFruHl_GUgYppXTn73ChZTJVis0phiS17b97agtRw15N9FetGF218o_Iwpcht_M9fQTMxP8rQN3u-QEEa7kiL7t2cg5qnigtnx3Wpf9PTQ93aNZftJa8=D4EB38E3'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-if test -f /home/lhk/miniconda3/bin/conda
-    eval /home/lhk/miniconda3/bin/conda "shell.fish" "hook" $argv | source
-else
-    if test -f "/home/lhk/miniconda3/etc/fish/conf.d/conda.fish"
-        . "/home/lhk/miniconda3/etc/fish/conf.d/conda.fish"
+function conda-activate
+    if test -f /home/lhk/miniconda3/bin/conda
+        eval /home/lhk/miniconda3/bin/conda "shell.fish" "hook" $argv | source
     else
-        set -x PATH "/home/lhk/miniconda3/bin" $PATH
+        if test -f "/home/lhk/miniconda3/etc/fish/conf.d/conda.fish"
+            . "/home/lhk/miniconda3/etc/fish/conf.d/conda.fish"
+        else
+            set -x PATH "/home/lhk/miniconda3/bin" $PATH
+        end
     end
 end
 # <<< conda initialize <<<

@@ -9,10 +9,12 @@
   "security.workspace.trust.enabled": false,
   "editor.fontFamily": "'Maple Mono', 'monospace', monospace",
   "extensions.autoUpdate": false,
-  "workbench.statusBar.visible": false,
+  "terminal.integrated.fontFamily": "'Maple Mono', 'Noto Sans Myanmar'",
   "terminal.external.linuxExec": "kitty",
   "terminal.explorerKind": "both",
   "terminal.sourceControlRepositoriesKind": "both",
   "telemetry.telemetryLevel": "off",
   "workbench.iconTheme": "material-icon-theme",
+  "editor.inlineSuggest.showToolbar": "always",
+  "editor.suggest.showStatusBar": true,
 }
